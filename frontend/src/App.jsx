@@ -13,7 +13,7 @@ function App() {
   const fetchBooks = async (query = '') => {
     setLoading(true);
     try {
-      const response = await axios.get(`http://localhost:5000/api/v1/books?search=${query}`);
+      const response = await axios.get(`https://library-inventory-backend-90am.onrender.com/api/v1/books?search=${query}`);
       setBooks(response.data.data || []);
     } catch (err) {
       console.error('Error fetching books:', err);
@@ -49,7 +49,7 @@ function App() {
     setLoading(true);
 
     try {
-      await axios.post('http://localhost:5000/api/v1/books', formData);
+      await axios.post('https://library-inventory-backend-90am.onrender.com/api/v1/books', formData);
       setFormData({ title: '', author: '', isbn: '', category: '' });
       fetchBooks();
     } catch (err) {
@@ -66,7 +66,7 @@ function App() {
   const handleDelete = async (id) => {
     setLoading(true);
     try {
-      await axios.delete(`http://localhost:5000/api/v1/books/${id}`);
+      await axios.delete(`https://library-inventory-backend-90am.onrender.com/api/v1/books/${id}`);
       fetchBooks();
     } catch (err) {
       console.error('Error deleting book:', err);
